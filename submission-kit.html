@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stepwise — Devpost submission kit</title>
+<style>
+  :root { --bg:#FAF7F2; --card:#fff; --ink:#22332C; --soft:#4F6257; --faint:#77897F;
+    --brand:#2D6A4F; --deep:#1F4A37; --softbg:#E3EFE9; --gold:#E9C46A; --goldink:#6B5300;
+    --goldbg:#FBF1DA; --line:1px solid #E3DCCF;
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; }
+  *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.65}
+  .wrap{max-width:860px;margin:0 auto;padding:30px 22px 80px}
+  h1{font-size:1.9rem;margin:0 0 6px} .sub{color:var(--soft);margin:0 0 8px}
+  .note{background:var(--goldbg);border:1px solid var(--gold);border-radius:14px;padding:14px 18px;margin:14px 0 34px;color:var(--goldink);font-weight:600}
+  .step{background:var(--card);border:var(--line);border-radius:18px;padding:24px 26px;margin-bottom:22px}
+  .step h2{margin:0 0 4px;font-size:1.25rem}
+  .kicker{color:var(--brand);font-weight:800;letter-spacing:.14em;font-size:.72rem;text-transform:uppercase;margin:0 0 6px}
+  .hint{color:var(--soft);font-size:.95em;margin:4px 0 14px}
+  .field{margin:16px 0 8px;padding:14px 16px;background:var(--bg);border-radius:14px;border:var(--line)}
+  .field .fname{font-weight:800;font-size:.9em;color:var(--brand)}
+  .paste{position:relative;margin-top:8px}
+  .paste textarea{width:100%;min-height:64px;border:2px solid #DCD5C7;border-radius:12px;padding:12px 84px 12px 14px;font:inherit;font-size:.93em;line-height:1.6;background:#fff;color:var(--ink);resize:vertical}
+  .copy{position:absolute;right:6px;top:6px;border:none;border-radius:10px;background:var(--brand);color:#fff;font-weight:800;padding:9px 14px;cursor:pointer;font-size:.85em}
+  .copy:hover{background:var(--deep)} .copy.ok{background:#4FBE8F}
+  ul.assets{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:8px}
+  ul.assets li{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;background:var(--softbg);border-radius:12px;padding:10px 14px}
+  ul.assets .a{flex:1;font-weight:700} ul.assets code{background:#fff;border-radius:8px;padding:2px 10px;font-size:.85em}
+  a{color:var(--deep)}
+  table{width:100%;border-collapse:collapse;font-size:.92em}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid #E3DCCF;vertical-align:top}
+  th{color:var(--soft);width:44%}
+  .ok{color:var(--brand);font-weight:800}
+  .kbd{background:#fff;border:1px solid #C9C2B2;border-bottom-width:2px;border-radius:6px;padding:0 .5em;font-size:.9em}
+  .big{display:inline-block;background:var(--brand);color:#fff;font-weight:800;padding:14px 26px;border-radius:999px;text-decoration:none;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Devpost submission kit — Stepwise</h1>
+  <p class="sub">Everything below is ready to copy-paste. Open your submission page in one tab and this kit in another. Total time: about 10 minutes.</p>
+  <p class="note">Cloudflare is blocking the automation sandbox, so these last 10 minutes are human-powered — everything else (app, video, images, texts) is already built, tested and live. Thank you, and follow the steps in order.</p>
+
+  <div class="step">
+    <p class="kicker">Step 1 · open</p>
+    <h2>Your submission page</h2>
+    <p class="hint">Log in if asked (your Devpost account). You should land on “Project overview”.</p>
+    <a class="big" target="_blank" rel="noopener" href="https://devpost.com/submit-to/31798-taskforge/manage/submissions/1246391/project-overview">Open the submission editor →</a>
+  </div>
+
+  <div class="step">
+    <p class="kicker">Step 2 · project overview</p>
+    <h2>Name + tagline</h2>
+    <div class="field"><span class="fname">Project name</span>
+      <div class="paste"><textarea id="t_name" readonly>Stepwise</textarea><button class="copy" data-for="t_name">Copy</button></div>
+    </div>
+    <div class="field"><span class="fname">Tagline (short description)</span>
+      <div class="paste"><textarea id="t_tag" readonly>The calm task companion that shows you only the next step — built for brains classic to-do apps forget.</textarea><button class="copy" data-for="t_tag">Copy</button></div>
+    </div>
+    <p class="hint">If it asks anything like “optional track / prompt”, leave defaults or pick the main theme. If it asks for your school/Discord, fill your own. Save &amp; continue.</p>
+  </div>
+
+  <div class="step">
+    <p class="kicker">Step 3 · images</p>
+    <h2>Cover + gallery</h2>
+    <p class="hint">Right-click each link → <span class="kbd">Save image as…</span> (or open and save), then upload in this order. Cover first, then the gallery images.</p>
+    <ul class="assets">
+      <li><span class="a">1 · COVER (2240×1260)</span><a target="_blank" href="https://43aquarius.github.io/stepwise/demo/screens/cover.jpg">cover.jpg</a></li>
+      <li><span class="a">2 · The wall vs. the calm home</span><a target="_blank" href="https://43aquarius.github.io/stepwise/demo/screens/today.png">today.png</a></li>
+      <li><span class="a">3 · Kind breakdown into sessions</span><a target="_blank" href="https://43aquarius.github.io/stepwise/demo/screens/breakdown.png">breakdown.png</a></li>
+      <li><span class="a">4 · One-step focus mode + ring timer</span><a target="_blank" href="https://43aquarius.github.io/stepwise/demo/screens/focus.png">focus.png</a></li>
+      <li><span class="a">5 · Trail of wins + stats</span><a target="_blank" href="https://43aquarius.github.io/stepwise/demo/screens/wins.png">wins.png</a></li>
+      <li><span class="a">6 · Accessibility panel (contrast + dyslexia on)</span><a target="_blank" href="https://43aquarius.github.io/stepwise/demo/screens/a11y.png">a11y.png</a></li>
+      <li><span class="a">7 · The wall (why this exists) — optional</span><a target="_blank" href="https://43aquarius.github.io/stepwise/demo/screens/chaos.png">chaos.png</a></li>
+    </ul>
+  </div>
+
+  <div class="step">
+    <p class="kicker">Step 4 · video link</p>
+    <h2>Demo / walkthrough</h2>
+    <div class="field"><span class="fname">Paste into the “video” / “demo” field</span>
+      <div class="paste"><textarea id="t_vid" readonly>https://43aquarius.github.io/stepwise/demo/demo.html</textarea><button class="copy" data-for="t_vid">Copy</button></div>
+    </div>
+    <p class="hint">It’s a 4:04 captioned walkthrough (English burned-in captions + EN/中文 caption tracks). No music, by design — captions first.</p>
+  </div>
+
+  <div class="step">
+    <p class="kicker">Step 5 · the story</p>
+    <h2>Details sections</h2>
+    <p class="hint">Copy each block into its matching section on Devpost. They already answer the hackathon’s required questions: problem, intended user, solution, tools, limitations, what we learned — plus the AI disclosure.</p>
+
+    <div class="field"><span class="fname">Inspiration</span>
+      <div class="paste"><textarea id="t_i1" readonly>Last semester, a friend opened her to-do app, saw 34 items, and closed it. Not because she was lazy — because for her ADHD brain, that list wasn’t a plan. It was a wall of 34 bricks, each labeled “you’re behind.”
+
+Most productivity tools are designed for brains that already work like spreadsheets. For people with ADHD, dyslexia, or anxiety, the same features — infinite lists, red overdue badges, streak counters — do the opposite of helping. TaskForge asked us to pick one real friction point and one real person. Ours was that moment: an overwhelming task on a screen that offers no next step.
+
+Stepwise is our answer, and its one rule is simple: never show the wall. Show one kind step at a time.</textarea><button class="copy" data-for="t_i1">Copy</button></div>
+    </div>
+
+    <div class="field"><span class="fname">What it does</span>
+      <div class="paste"><textarea id="t_i2" readonly>Stepwise turns one intimidating task into a short, kind plan:
+
+• Break it down — a readable, rule-based engine (no AI in the loop) splits a task into small, concrete steps using templates for cleaning, study, email, errands, exercise, cooking and travel. Every estimate is a kind estimate: ~35% buffer, because time blindness is real.
+• Sessions, not walls — steps are chunked into sessions of at most four, with visible breaks and a reward step at the end. Finishing should feel like finishing.
+• One-step focus mode — the screen shows exactly the current step. A quiet ring timer (time always in text, never color alone) can be paused, or given five more kind minutes. Press Done any moment — or Skip, because skipping is never failure.
+• A trail of wins — every finished step becomes a stone on a winding path; lanterns mark every fifth. Stats count steps, not streak-shaming.
+• Accessibility panel — five text sizes, high contrast, dyslexia-friendly text, reduced motion; full keyboard control; ARIA live announcements for screen readers.
+• Yours only — localStorage, no accounts, no cloud, no tracking; export/import as JSON. It’s a PWA: installable and fully offline.</textarea><button class="copy" data-for="t_i2">Copy</button></div>
+    </div>
+
+    <div class="field"><span class="fname">How we built it</span>
+      <div class="paste"><textarea id="t_i3" readonly>Zero dependencies, no build step — on purpose. A tool that judges you should be a tool you can read, so anyone (including the people it’s for) can open the source and understand it.
+
+• Vanilla ES modules: a rule-based breakdown engine (js/breakdown.js) with 8 category templates and a generic fallback, session chunking, and an editor round-trip format (label | minutes).
+• A focus-mode state machine (js/focus.js) with explicit win / session-complete / task-complete endings — the next step is never auto-advanced; it’s always your choice.
+• CSS custom-property theming for the accessibility modes; prefers-reduced-motion plus a manual override, because not everyone can find the OS setting on a bad day.
+• Web Audio API for the soft two-tone chime — synthesized at runtime, no audio files.
+• A service worker (sw.js) cache-first shell for offline; localStorage persistence; 24 unit tests for the engine (node tests/breakdown.test.js) and a 50-check browser test suite, all green.
+• A 4-minute captioned demo video, with every on-screen action scheduled on a wall-clock beat sheet so the burned-in captions stay in sync.</textarea><button class="copy" data-for="t_i3">Copy</button></div>
+    </div>
+
+    <div class="field"><span class="fname">Challenges we ran into</span>
+      <div class="paste"><textarea id="t_i4" readonly>1. The honest version of hidden — our step rows are display:flex buttons, and we discovered any author display rule beats the UA’s [hidden] (display:none). Buttons we thought were hidden were quietly visible (a “+5 minutes” button that should have been hidden!). Fix: a global [hidden]{display:none!important} rule.
+
+2. The focus-mode flowchart — our first version celebrated twice (per step and per session) and could loop forever. We rewrote it as a small state machine with explicit endings, and it finally felt calm — which is the whole point.
+
+3. Kind but honest estimates — multiplying by 1.35 is easy; explaining why in one line of UI (“time blindness is real”) took most of the writing time.
+
+4. Subtitle-synced video — the demo is one continuous recording; every click lands on a wall-clock beat so the burned-in captions always match the action. We re-recorded twice for two small bugs we refused to ship.</textarea><button class="copy" data-for="t_i4">Copy</button></div>
+    </div>
+
+    <div class="field"><span class="fname">Accomplishments that we're proud of</span>
+      <div class="paste"><textarea id="t_i5" readonly>• A 50-check browser test suite: all green, zero console errors.
+• A published WCAG 2.1 AA self-audit (docs/ACCESSIBILITY.md) that also lists its own limits.
+• The compassionate copy: “Skipping isn’t failing. Momentum matters more than perfection.” — shown at the exact moment someone needs it.
+• A demo video captioned in English and Chinese. Captions first, because accessibility is the product.</textarea><button class="copy" data-for="t_i5">Copy</button></div>
+    </div>
+
+    <div class="field"><span class="fname">What we learned (including limitations)</span>
+      <div class="paste"><textarea id="t_i6" readonly>Accessibility is product design, not a checklist. Time should never be color alone; “done” should never be red; and “reduce motion” needs a manual override, because OS settings are hard to find on bad days. We learned that [hidden] can lose to author CSS, that session boundaries are an emotional feature — not just a layout one — and that calm copywriting is engineering: every word either lowers a barrier or raises one.
+
+Limitations, honestly: the breakdown engine is rule-based, so it’s only as wise as its templates — that’s why every step stays editable. The dyslexia mode is typography-based (spacing, rhythm, color temperature) — we don’t ship a dyslexia font. And we haven’t yet tested with real screen-reader users; that is the first post-hackathon milestone.</textarea><button class="copy" data-for="t_i6">Copy</button></div>
+    </div>
+
+    <div class="field"><span class="fname">What's next for Stepwise</span>
+      <div class="paste"><textarea id="t_i7" readonly>• Testing sessions with real screen-reader users and dyslexic students.
+• More breakdown templates driven by GitHub issues — the community knows their tasks better than we do.
+• Localization, starting with Chinese (the demo already carries a Chinese caption track).
+• Optional end-to-end encrypted sync — opt-in, never default.
+• A share-sheet quick-add, so capturing a task takes one tap.</textarea><button class="copy" data-for="t_i7">Copy</button></div>
+    </div>
+  </div>
+
+  <div class="step">
+    <p class="kicker">Step 6 · links &amp; built with</p>
+    <h2>Paste these links</h2>
+    <ul class="assets">
+      <li><span class="a">“Try it out” / demo link</span><a target="_blank" href="https://43aquarius.github.io/stepwise/">https://43aquarius.github.io/stepwise/</a></li>
+      <li><span class="a">Code / GitHub</span><a target="_blank" href="https://github.com/43aquarius/stepwise">https://github.com/43aquarius/stepwise</a></li>
+    </ul>
+    <p class="hint" style="margin-top:12px">Built-with tags: pick <b>JavaScript</b>, <b>HTML</b>, <b>CSS</b> (and anything similar the list offers). If there is an <b>Accessibility</b> tag, tick it.</p>
+  </div>
+
+  <div class="step">
+    <p class="kicker">Step 7 · team</p>
+    <h2>Just you</h2>
+    <p class="hint">You built it as a solo submission — your Devpost account is already listed. Nothing to add unless you want to invite friends.</p>
+  </div>
+
+  <div class="step">
+    <p class="kicker">Step 8 · final check &amp; submit</p>
+    <h2>Requirement checklist (from the hackathon rules)</h2>
+    <table>
+      <tr><th>Requirement</th><th>Status</th></tr>
+      <tr><td>One user, one named productivity/access barrier, meaningful change</td><td class="ok">✓ Inspiration</td></tr>
+      <tr><td>Original working prototype (planning / focus / completing tasks)</td><td class="ok">✓ live app + repo</td></tr>
+      <tr><td>Complete Devpost page: story, team, demo video, code</td><td class="ok">✓ this kit</td></tr>
+      <tr><td>Problem · user · solution · tools · limitations · learned</td><td class="ok">✓ all in the story sections</td></tr>
+      <tr><td>Disclose pre-existing work &amp; AI assistance</td><td class="ok">✓ “How we built it” + note below</td></tr>
+    </table>
+    <p class="hint" style="margin-top:12px">If any section allows extra text, you can also add this one-liner:</p>
+    <div class="paste"><textarea id="t_disc" readonly>Built during the hackathon window (Oct 19–24, 2026). No pre-existing project was reused. AI assistance (GLM, by Z.ai) is disclosed and was directed, tested and decided by the submitter. System fonts, original SVG icons; no third-party assets. No user data ever leaves the device.</textarea><button class="copy" data-for="t_disc">Copy</button></div>
+    <p style="margin-top:18px"><b>Submit before Oct 24, 21:00 UTC.</b> After submitting, tell the assistant — it will verify the public project page.</p>
+  </div>
+
+<script>
+  document.querySelectorAll('.copy').forEach(b => {
+    b.addEventListener('click', async () => {
+      const ta = document.getElementById(b.dataset.for);
+      ta.select();
+      try { await navigator.clipboard.writeText(ta.value); } catch { document.execCommand('copy'); }
+      b.textContent = 'Copied ✓'; b.classList.add('ok');
+      setTimeout(() => { b.textContent = 'Copy'; b.classList.remove('ok'); }, 1600);
+    });
+  });
+</script>
+</div>
+</body>
+</html>
