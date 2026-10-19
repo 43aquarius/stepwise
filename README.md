@@ -5,7 +5,7 @@
 Stepwise is a calm, offline-friendly web app that turns one overwhelming task into a short list of kind, concrete steps — and then shows you *only the next step*. It was built during the **TaskForge hackathon** (HackathonForEveryone), whose theme it takes personally: *“Build accessible tools that help people focus, organize, and get more done.”*
 
 > Try it live: **https://43aquarius.github.io/stepwise/**
-> Watch the captioned demo: **https://43aquarius.github.io/stepwise/demo.html**
+> Watch the captioned demo: **https://43aquarius.github.io/stepwise/demo/demo.html** (the short address `/stepwise/demo.html` redirects there too)
 
 ---
 
@@ -76,7 +76,8 @@ js/wins.js            trail of wins + stats
 js/dialogs.js         accessibility panel, help, data tools
 sw.js                 service worker (offline shell)
 tests/                breakdown engine tests
-demo/                 captioned demo video page assets (served at /demo.html)
+demo/                 captioned demo video page assets (served at /demo/demo.html)
+demo.html             short link → redirects to the demo page above
 docs/ACCESSIBILITY.md WCAG self-audit
 ```
 
