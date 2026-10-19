@@ -54,17 +54,17 @@
     <h1>Stepwise — demo video</h1>
     <a class="back" href="index.html">← back to the app</a>
   </div>
-  <p class="sub">One calm step at a time — a 4-minute captioned walkthrough. Subtitles are burned in, and the player carries English + Chinese caption tracks. There is no music on purpose: captions first, because accessibility is the product.</p>
+  <p class="sub">One calm step at a time — a 4-minute captioned walkthrough. English captions are burned into the picture, so they appear exactly once — everywhere, even offline. An optional Simplified Chinese track can be switched on with the CC button. There is no music on purpose: captions first, because accessibility is the product.</p>
 
   <figure>
     <video controls playsinline preload="metadata" poster="poster.jpg" width="1280" height="720">
       <source src="stepwise-demo.mp4" type="video/mp4">
-      <track kind="captions" src="stepwise-demo.en.vtt" srclang="en" label="English" default>
-      <track kind="captions" src="stepwise-demo.zh.vtt" srclang="zh" label="中文（简体）">
+      <!-- English captions are burned into the video itself — a soft EN track here would only draw the same line twice. Only the optional Chinese track is offered via the CC button. -->
+      <track kind="captions" src="stepwise-demo.zh.vtt" srclang="zh" label="中文（简体）· opens over the burned-in English">
       <p>Your browser can’t play this video. The raw file is at
         <a href="stepwise-demo.mp4">stepwise-demo.mp4</a>.</p>
     </video>
-    <figcaption>4:04 · 1280×720 · H.264 · burned-in English captions · switchable EN/中文 tracks via the CC button.</figcaption>
+    <figcaption>4:04 · 1280×720 · H.264 · burned-in English captions (shown exactly once) · optional 中文 track via the CC button.</figcaption>
   </figure>
 
   <div class="card">
@@ -82,7 +82,7 @@
 
   <div class="card">
     <h2>Transcript</h2>
-    <p>The full transcript (English) is also available as the caption track file
+    <p>The full transcript (English) is also downloadable as a caption file:
       <a href="stepwise-demo.en.vtt">stepwise-demo.en.vtt</a>
       (Chinese: <a href="stepwise-demo.zh.vtt">stepwise-demo.zh.vtt</a>).</p>
     <details class="transcript" open>
