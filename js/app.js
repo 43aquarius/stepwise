@@ -178,6 +178,7 @@ function renderToday() {
   const limit = showAllTasks ? sorted.length : Math.min(3, sorted.length);
   for (const t of sorted.slice(0, limit)) {
     const li = document.createElement('li');
+    li.className = 'task-card';
     const total = (t.steps || []).length;
     const done = (t.steps || []).filter(s => s.done).length;
     const est = (t.steps || []).reduce((a, s) => a + (s.minutes || 0), 0);

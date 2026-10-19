@@ -48,8 +48,8 @@ export function initFocus(deps) {
     }
     const step = currentStep();
     if (!step) return;
-    if (timer.remaining > 0) timer.resume();
-    else timer.start(step.minutes);
+    if (timer.remaining > 0) { timer.resume(); ctx.els.timerState.textContent = ''; }
+    else { timer.start(step.minutes); }
     ctx.els.btnTimer.textContent = 'Pause';
     ctx.announce(`Timer started: about ${step.minutes} minutes.`);
   });

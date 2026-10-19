@@ -116,6 +116,8 @@ export function timeAgo(ts) {
 
 /* ---------- demo data ---------- */
 
+import { toSessions } from './breakdown.js';
+
 export function seedDemo() {
   const now = Date.now();
   const H = 3600000, D = 86400000;
@@ -171,6 +173,8 @@ export function seedDemo() {
     ['Take a photo of your clean space — then enjoy it', 4, 'reward'],
   ]);
 
+  kitchen.sessions = toSessions(kitchen.steps, 4);
+
   const active = {
     id: uid(), title: 'Prepare the presentation for Friday', createdAt: now - 2 * D,
     steps: [
@@ -183,6 +187,7 @@ export function seedDemo() {
       { id: uid(), label: 'Do something kind for yourself', minutes: 10, kind: 'reward', done: false, skipped: false, doneAt: null },
     ],
   };
+  active.sessions = toSessions(active.steps, 4);
 
   return {
     version: 1,

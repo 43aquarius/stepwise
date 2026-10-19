@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Stepwise — demo video (captioned)</title>
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<style>
+  :root {
+    --bg:#FAF7F2; --bg-soft:#F3EDE3; --card:#fff; --ink:#22332C; --ink-soft:#4F6257;
+    --ink-faint:#77897F; --brand:#2D6A4F; --brand-deep:#1F4A37; --brand-soft:#E3EFE9;
+    --accent:#E9C46A; --accent-soft:#FBF1DA; --accent-ink:#6B5300; --line:1px solid #E3DCCF;
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); line-height:1.65; }
+  a { color: var(--brand-deep); }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 28px 22px 70px; }
+  .top { display:flex; flex-wrap:wrap; gap:10px 18px; align-items:baseline; justify-content:space-between; }
+  h1 { font-size: 1.7rem; margin: 0; letter-spacing: -.01em; }
+  .back { font-weight: 700; text-decoration: none; color: var(--ink-soft); }
+  .back:hover { color: var(--brand-deep); }
+  .sub { color: var(--ink-soft); margin: 6px 0 24px; max-width: 60ch; }
+  figure { margin: 0 0 14px; }
+  video {
+    width: 100%; border-radius: 18px; background: #101511;
+    border: var(--line); box-shadow: 0 18px 50px rgba(34,51,44,.16); display:block;
+  }
+  figcaption { color: var(--ink-faint); font-size: .9em; margin-top: 10px; }
+  .card {
+    background: var(--card); border: var(--line); border-radius: 18px;
+    padding: 22px 24px; margin-top: 26px;
+  }
+  h2 { font-size: 1.15rem; margin: 0 0 8px; }
+  .card p { color: var(--ink-soft); margin: 0 0 12px; }
+  .chip-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .chip {
+    background: var(--accent-soft); color: var(--accent-ink); border-radius: 999px;
+    padding: 3px 14px; font-weight: 700; font-size: .85em;
+  }
+  details.transcript { margin-top: 6px; }
+  details.transcript summary { cursor: pointer; font-weight: 800; color: var(--brand-deep); padding: 8px 0; }
+  .tr-list { margin: 8px 0 0; padding-left: 1.2em; color: var(--ink-soft); }
+  .tr-list li { margin: 4px 0; }
+  .links { display:flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 10px; font-weight: 700; }
+  .links a { text-decoration: none; }
+  .links a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <h1>Stepwise — demo video</h1>
+    <a class="back" href="index.html">← back to the app</a>
+  </div>
+  <p class="sub">One calm step at a time — a 4-minute captioned walkthrough. Subtitles are burned in, and the player carries English + Chinese caption tracks. There is no music on purpose: captions first, because accessibility is the product.</p>
+
+  <figure>
+    <video controls playsinline preload="metadata" poster="poster.jpg" width="1280" height="720">
+      <source src="stepwise-demo.mp4" type="video/mp4">
+      <track kind="captions" src="stepwise-demo.en.vtt" srclang="en" label="English" default>
+      <track kind="captions" src="stepwise-demo.zh.vtt" srclang="zh" label="中文（简体）">
+      <p>Your browser can’t play this video. The raw file is at
+        <a href="stepwise-demo.mp4">stepwise-demo.mp4</a>.</p>
+    </video>
+    <figcaption>4:04 · 1280×720 · H.264 · burned-in English captions · switchable EN/中文 tracks via the CC button.</figcaption>
+  </figure>
+
+  <div class="card">
+    <h2>What you’ll see</h2>
+    <p>The wall a normal to-do app builds — then Stepwise: kind breakdowns with buffered estimates, sessions of at most four steps, the one-step focus screen with a quiet text timer, the trail of wins, and the accessibility panel (five text sizes, high contrast, dyslexia-friendly text, reduced motion), full keyboard flow, and the PWA on a phone.</p>
+    <div class="chip-row">
+      <span class="chip">ADHD-friendly</span>
+      <span class="chip">dyslexia-friendly</span>
+      <span class="chip">screen-reader tested patterns</span>
+      <span class="chip">offline PWA</span>
+      <span class="chip">zero dependencies</span>
+      <span class="chip">no tracking, ever</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Transcript</h2>
+    <p>The full transcript (English) is also available as the caption track file
+      <a href="stepwise-demo.en.vtt">stepwise-demo.en.vtt</a>
+      (Chinese: <a href="stepwise-demo.zh.vtt">stepwise-demo.zh.vtt</a>).</p>
+    <details class="transcript" open>
+      <summary>Show transcript</summary>
+      <ol class="tr-list">
+        <li>This is a normal to-do list. For an ADHD, dyslexic, or anxious brain, it isn’t a plan — it’s a wall.</li>
+        <li>Stepwise is our answer — built for the TaskForge hackathon, whose theme is accessible tools for focus and calm productivity.</li>
+        <li>The home screen refuses to show you a wall: your recent tasks, one input, and calm copy.</li>
+        <li>Deciding can wait. Dump a task in exactly as it is — sorting it out is the app’s job, not yours.</li>
+        <li>Let’s add a real one: “Reply to Prof. Reyes about the thesis draft.”</li>
+        <li>Stepwise breaks it into small, concrete steps — with kind time estimates: a 35% buffer, because time blindness is real.</li>
+        <li>Steps are chunked into sessions of at most four, with breaks in between. Every list stays short enough to breathe.</li>
+        <li>And the last step is always a reward. Finishing should feel like finishing.</li>
+        <li>Focus mode shows exactly one step. Everything else hides behind a peek — available, never pushed.</li>
+        <li>The ring timer is quiet by design. Time is always shown as text — never color alone.</li>
+        <li>It can be paused. And when time runs low, five kind minutes appear — no questions asked.</li>
+        <li>But you never have to wait for a timer. Press Done the moment it feels done.</li>
+        <li>The next step never auto-plays. You set the pace.</li>
+        <li>Every win gets a breath, not a slot machine.</li>
+        <li>Or skip the step. Skipping is never failure — momentum matters more than perfection.</li>
+        <li>One more — and the session ends.</li>
+        <li>Sessions end with a built-in break, because rest is part of the work.</li>
+        <li>Back on the task, progress is quiet: no confetti pressure, no red badges.</li>
+        <li>This is the trail of wins: one stone per finished step, lanterns every fifth.</li>
+        <li>Stats count steps, not streaks. There is no shame anywhere in this app.</li>
+        <li>Every stone is named and keyboard-focusable — screen readers get the same story.</li>
+        <li>Your data is yours: export or import as JSON, any time. No accounts, no cloud, no tracking.</li>
+        <li>The accessibility panel changes everything instantly — and remembers it, locally.</li>
+        <li>Five text sizes: the whole UI scales, not just paragraphs.</li>
+        <li>High contrast: black, white and gold, tested beyond AA.</li>
+        <li>Dyslexia-friendly text: rounder letters, wide spacing, a calmer rhythm.</li>
+        <li>Reduce motion, for days when even gentle animation is too much.</li>
+        <li>And back to default in seconds. Your settings, your device.</li>
+        <li>Fully keyboard-driven: N for a new task, Space runs the timer, Esc always lets you out.</li>
+        <li>A polite live region announces every step change and timer milestone.</li>
+        <li>It’s a PWA: installable and fully offline. Your list works on a plane, or at 2 a.m. with no signal.</li>
+        <li>On a phone, the same calm: one column, big targets, nothing to hunt for.</li>
+        <li>Under the hood: readable rules, not AI. 24 passing tests, zero dependencies.</li>
+        <li>Built during the hackathon, with the AI assistance disclosed — as the rules ask.</li>
+        <li>Stepwise — one calm step at a time. The link is right below this video.</li>
+      </ol>
+    </details>
+  </div>
+
+  <div class="card">
+    <h2>Links</h2>
+    <div class="links">
+      <a href="index.html">Open the app</a>
+      <a href="https://github.com/43aquarius/stepwise">Source on GitHub</a>
+      <a href="https://github.com/43aquarius/stepwise/blob/main/docs/ACCESSIBILITY.md">Accessibility notes</a>
+    </div>
+    <p style="margin-top:14px">Built during the TaskForge hackathon. AI assistance (GLM, by Z.ai) is disclosed — as the rules ask.</p>
+  </div>
+</div>
+</body>
+</html>
