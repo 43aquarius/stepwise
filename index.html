@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stepwise — one calm step at a time</title>
+<meta name="description" content="Stepwise is a calm, accessibility-first task companion. It turns overwhelming tasks into one gentle step at a time — designed with ADHD, dyslexia and screen-reader users in mind.">
+<meta name="theme-color" content="#FAF7F2">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="css/core.css">
+<link rel="stylesheet" href="css/modes.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<div id="announcer" class="sr-only" role="status" aria-live="polite"></div>
+
+<header class="app-header">
+  <div class="brand">
+    <svg class="logo" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+      <circle cx="24" cy="24" r="23" class="logo-bg"/>
+      <g class="logo-stones">
+        <ellipse cx="15" cy="33" rx="6.5" ry="4.5"/>
+        <ellipse cx="24.5" cy="22.5" rx="6.5" ry="4.5"/>
+        <ellipse cx="34" cy="12" rx="6.5" ry="4.5" class="logo-stone-top"/>
+      </g>
+      <path d="M40 4 q6 2 4 8" class="logo-arc" fill="none"/>
+    </svg>
+    <a href="#today" class="brand-name">Stepwise</a>
+  </div>
+  <nav class="main-nav" aria-label="Primary">
+    <a href="#today" data-nav="today">Today</a>
+    <a href="#wins" data-nav="wins">Wins</a>
+  </nav>
+  <div class="header-actions">
+    <button id="btnHelp" class="btn btn-ghost" aria-haspopup="dialog">Help</button>
+    <button id="btnA11y" class="btn btn-ghost" aria-haspopup="dialog">Accessibility</button>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ TODAY ============ -->
+  <section id="view-today" class="view" aria-labelledby="today-h">
+    <div class="view-inner">
+      <p class="eyebrow">Today</p>
+      <h1 id="today-h">Pick one thing. That’s already enough.</h1>
+      <p class="view-sub">A long list is a wall. Stepwise keeps it short, and never shows you more than the next gentle step.</p>
+
+      <form id="addForm" class="add-form">
+        <label for="taskInput" class="sr-only">New task</label>
+        <input id="taskInput" name="taskInput" type="text" autocomplete="off"
+               placeholder="One thing on your mind… e.g. “deep clean the kitchen”" />
+        <button type="submit" class="btn btn-primary">Add</button>
+      </form>
+      <p class="add-hint">Can’t decide? Just dump it in — sorting it out is Stepwise’s job, not yours.</p>
+
+      <div id="todayEmpty" class="empty-state" hidden>
+        <p class="empty-title">Nothing here yet — that’s okay.</p>
+        <p>Adding one tiny task above is a perfectly fine start. You can break it into kind, small steps on the next screen.</p>
+      </div>
+
+      <ul id="taskList" class="task-list"></ul>
+      <button id="btnShowAll" class="btn btn-ghost show-all" hidden>Show all</button>
+
+      <p class="why-link"><a href="#chaos">Why does this screen feel so calm? →</a></p>
+    </div>
+  </section>
+
+  <!-- ============ TASK DETAIL ============ -->
+  <section id="view-task" class="view" aria-labelledby="task-h" hidden>
+    <div class="view-inner">
+      <a class="back-link" href="#today">← All tasks</a>
+      <p class="eyebrow" id="taskEyebrow">Task</p>
+      <h1 id="task-h">Deep clean the kitchen</h1>
+      <p class="view-sub" id="taskMeta"></p>
+
+      <div id="breakdownCta" class="cta-card" hidden>
+        <p class="cta-title">Big tasks are just small steps wearing a trench coat.</p>
+        <p class="cta-sub">Stepwise will split this into kind, concrete steps with gentle time estimates. You can edit every step afterwards — you stay in charge.</p>
+        <button id="btnBreakdown" class="btn btn-primary btn-big">Break it down for me</button>
+        <label class="check-row">
+          <input type="checkbox" id="kindToggle" checked>
+          <span>Kind time estimates <span class="check-note">— add a gentle buffer, because time blindness is real</span></span>
+        </label>
+      </div>
+
+      <div id="sessionsWrap" hidden>
+        <div id="sessionList"></div>
+        <div class="task-tools">
+          <button id="btnEditSteps" class="btn btn-ghost" aria-expanded="false" aria-controls="editWrap">Edit steps</button>
+          <button id="btnRedo" class="btn btn-ghost">Break it down again</button>
+          <button id="btnDelete" class="btn btn-danger-ghost">Delete this task</button>
+        </div>
+        <div id="editWrap" hidden>
+          <label for="stepsEditor" class="edit-label">One step per line — <kbd>label</kbd> <kbd>|</kbd> <kbd>minutes</kbd></label>
+          <textarea id="stepsEditor" rows="8" spellcheck="false"></textarea>
+          <div class="edit-actions">
+            <button id="btnSaveSteps" class="btn btn-primary">Save steps</button>
+            <button id="btnCancelEdit" class="btn btn-ghost">Cancel</button>
+          </div>
+          <p class="edit-note">Break steps: write them like any step. Prefix the line with <kbd>break:</kbd> to mark a break.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOCUS ============ -->
+  <section id="view-focus" class="view view-focus" aria-labelledby="focus-h" hidden>
+    <div class="focus-top">
+      <a id="focusBack" class="back-link" href="#today">← Task</a>
+      <p id="focusWhere" class="focus-where"></p>
+    </div>
+    <div class="focus-stage">
+      <p class="eyebrow" id="focusStepNo">Step 1 of 5</p>
+      <h1 id="focus-h" class="focus-step-label">Put on music you like and set a 5-minute timer</h1>
+
+      <div class="timer-block">
+        <div class="timer-ring">
+          <svg viewBox="0 0 220 220" aria-hidden="true" focusable="false">
+            <circle class="ring-bg" cx="110" cy="110" r="96"/>
+            <circle class="ring-fg" id="ringFg" cx="110" cy="110" r="96"/>
+          </svg>
+          <div class="timer-text" id="timerText">5:00</div>
+        </div>
+        <p class="timer-sub" id="timerSub">about 5 minutes</p>
+        <p id="timerState" class="timer-state" role="status" aria-live="polite"></p>
+      </div>
+
+      <div class="focus-controls">
+        <button id="btnDone" class="btn btn-primary btn-big">Done ✓</button>
+        <button id="btnTimer" class="btn btn-ghost">Start timer</button>
+        <button id="btnExtend" class="btn btn-ghost" hidden>+5 kind minutes</button>
+      </div>
+      <div class="focus-skip">
+        <button id="btnSkip" class="linklike">Skip this step →</button>
+        <p class="skip-note">Skipping isn’t failing. Momentum matters more than perfection.</p>
+      </div>
+
+      <details class="peek">
+        <summary>Peek at the remaining steps</summary>
+        <ol id="peekList" class="peek-list"></ol>
+      </details>
+    </div>
+
+    <div id="celebrate" class="celebrate" hidden>
+      <div id="confettiHost" class="confetti-host" aria-hidden="true"></div>
+      <p class="celebrate-title" id="celebrateTitle">That’s a win. 🌱</p>
+      <p class="celebrate-sub" id="celebrateSub">Take one breath before the next one. No rush.</p>
+      <div class="celebrate-actions">
+        <button id="btnNextStep" class="btn btn-primary btn-big">Next step →</button>
+        <button id="btnFinishSession" class="btn btn-ghost">Back to the task</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WINS ============ -->
+  <section id="view-wins" class="view" aria-labelledby="wins-h" hidden>
+    <div class="view-inner">
+      <p class="eyebrow">Your wins</p>
+      <h1 id="wins-h">Every checked box counts.</h1>
+      <p class="view-sub">Especially the small ones. This is the trail your finished steps leave behind.</p>
+
+      <div class="stats-row">
+        <div class="stat-card"><span class="stat-num" id="statToday">0</span><span class="stat-label">steps today</span></div>
+        <div class="stat-card"><span class="stat-num" id="statWeek">0</span><span class="stat-label">this week</span></div>
+        <div class="stat-card"><span class="stat-num" id="statStreak">0</span><span class="stat-label">day streak</span></div>
+      </div>
+
+      <h2 class="trail-h">The trail</h2>
+      <div class="trail-wrap">
+        <svg id="trailSvg" viewBox="0 0 820 240" role="img" aria-labelledby="trailDesc">
+          <title id="trailDesc">A winding path that lights up with one stone per finished step</title>
+        </svg>
+        <p id="trailNote" class="trail-note"></p>
+      </div>
+
+      <h2 class="latest-h">Latest wins</h2>
+      <ul id="recentList" class="recent-list"></ul>
+      <p id="recentEmpty" class="empty-state" hidden>No wins yet. Your first one is one small step away.</p>
+
+      <div class="data-card">
+        <h2 class="data-h">Your data, your device</h2>
+        <p class="data-sub">Stepwise stores everything locally in your browser. No accounts, no clouds, no spying.</p>
+        <div class="data-actions">
+          <button id="btnExport" class="btn btn-ghost">Export JSON</button>
+          <label class="btn btn-ghost file-btn">Import JSON<input type="file" id="fileImport" accept="application/json"></label>
+          <button id="btnSeed" class="btn btn-ghost">Load sample data</button>
+          <button id="btnErase" class="btn btn-danger-ghost">Erase everything</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHAOS (the "before") ============ -->
+  <section id="view-chaos" class="view view-chaos" aria-labelledby="chaos-h" hidden>
+    <div class="view-inner">
+      <p class="eyebrow">The wall</p>
+      <h1 id="chaos-h">This is how a normal to-do list can feel.</h1>
+      <p class="view-sub">For an ADHD, dyslexic or anxious brain, “one task” is rarely one task — and a wall of items stops being a plan and becomes a verdict.</p>
+      <div class="chaos-box" aria-hidden="true">
+        <p class="sr-only">Illustration: an overcrowded to-do list with 26 items, tiny controls, overdue badges and no sense of order.</p>
+        <ul class="chaos-list">
+          <li class="od">Clean the kitchen <span>overdue 3d</span></li>
+          <li>Email Prof. Reyes about thesis draft</li>
+          <li class="od">Laundry <span>overdue 5d</span></li>
+          <li>Buy birthday gift for Mom !!</li>
+          <li>Read 40 pages & take notes</li>
+          <li>Call dentist — reschedule</li>
+          <li class="od">Finish scholarship form <span>due tomorrow</span></li>
+          <li>Meal prep???</li>
+          <li>Fix bike tire</li>
+          <li>Reply to 12 emails</li>
+          <li class="od">Term paper outline <span>overdue 1w</span></li>
+          <li>Buy groceries (list?? where)</li>
+          <li>Water the plants</li>
+          <li>Cancel subscription</li>
+          <li class="od">Return library books <span>fine +$6</span></li>
+          <li>Practice presentation</li>
+          <li>Backup laptop</li>
+          <li>Organize photos</li>
+          <li class="od">Study for stats midterm <span>in 3 days</span></li>
+          <li>Print handout for meeting</li>
+          <li>Fix resume</li>
+          <li class="od">Register for next term <span>opens today</span></li>
+          <li>Call grandma</li>
+          <li>Deep clean the kitchen</li>
+          <li>Sort the laundry into the right piles and then…</li>
+          <li>Figure out life??? <span>overdue always</span></li>
+        </ul>
+      </div>
+      <div class="chaos-cta">
+        <p class="cta-title">Stepwise refuses to show you this wall.</p>
+        <p class="cta-sub">It breaks the wall into pebbles, hands you exactly one pebble at a time, and keeps the rest politely out of sight.</p>
+        <a class="btn btn-primary btn-big" href="#today">Try the calm version →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="app-footer">
+  <p>Stepwise · one calm step at a time</p>
+  <p class="footer-links">
+    <a href="https://github.com/43aquarius/stepwise" target="_blank" rel="noopener">Code on GitHub</a>
+    <a href="demo.html" >Demo video (captioned)</a>
+    <a href="https://github.com/43aquarius/stepwise/blob/main/docs/ACCESSIBILITY.md" target="_blank" rel="noopener">Accessibility notes</a>
+    <a href="#chaos">The wall</a>
+  </p>
+  <p class="footer-note">Built during the TaskForge hackathon. Made with care — and disclosed AI assistance — for brains that classic to-do apps forget.</p>
+</footer>
+
+<!-- ============ DIALOGS ============ -->
+<dialog id="a11yPanel" aria-labelledby="a11yTitle" class="panel">
+  <form method="dialog">
+    <h2 id="a11yTitle">Make Stepwise yours</h2>
+    <p class="panel-sub">Everything here applies instantly and stays on this device.</p>
+
+    <fieldset>
+      <legend>Text size</legend>
+      <div class="size-row" role="radiogroup" aria-label="Text size">
+        <label><input type="radio" name="size" value="S"> <span>S</span></label>
+        <label><input type="radio" name="size" value="M" checked> <span>M</span></label>
+        <label><input type="radio" name="size" value="L"> <span>L</span></label>
+        <label><input type="radio" name="size" value="XL"> <span>XL</span></label>
+        <label><input type="radio" name="size" value="XXL"> <span>XXL</span></label>
+      </div>
+    </fieldset>
+
+    <div class="switch-list">
+      <label class="switch-row">
+        <input type="checkbox" id="optContrast">
+        <span class="switch" aria-hidden="true"></span>
+        <span class="switch-label">High contrast
+          <small>Bold black &amp; white with golden focus</small></span>
+      </label>
+      <label class="switch-row">
+        <input type="checkbox" id="optDyslexia">
+        <span class="switch" aria-hidden="true"></span>
+        <span class="switch-label">Dyslexia-friendly text
+          <small>Round letters, wide spacing, calm rhythm</small></span>
+      </label>
+      <label class="switch-row">
+        <input type="checkbox" id="optMotion">
+        <span class="switch" aria-hidden="true"></span>
+        <span class="switch-label">Reduce motion
+          <small>No confetti, no pulses — just calm</small></span>
+      </label>
+      <label class="switch-row">
+        <input type="checkbox" id="optSound" checked>
+        <span class="switch" aria-hidden="true"></span>
+        <span class="switch-label">Gentle timer sounds
+          <small>A soft chime when a step’s time is up</small></span>
+      </label>
+      <label class="switch-row">
+        <input type="checkbox" id="optKind" checked>
+        <span class="switch" aria-hidden="true"></span>
+        <span class="switch-label">Kind time estimates
+          <small>~35% buffer on every estimate — time blindness is real</small></span>
+      </label>
+    </div>
+    <button class="btn btn-primary" value="ok">Done</button>
+  </form>
+</dialog>
+
+<dialog id="helpDialog" aria-labelledby="helpTitle" class="panel">
+  <h2 id="helpTitle">Little helpers</h2>
+  <p class="panel-sub">Stepwise works fully with keyboard and screen readers.</p>
+  <table class="kbd-table">
+    <caption class="sr-only">Keyboard shortcuts</caption>
+    <tbody>
+      <tr><th scope="row"><kbd>N</kbd></th><td>Jump to “add a task”</td></tr>
+      <tr><th scope="row"><kbd>T</kbd> / <kbd>W</kbd></th><td>Go to Today / Wins</td></tr>
+      <tr><th scope="row"><kbd>Space</kbd></th><td>In focus mode: start / pause the timer</td></tr>
+      <tr><th scope="row"><kbd>Esc</kbd></th><td>Close a panel, or leave focus mode</td></tr>
+      <tr><th scope="row"><kbd>?</kbd></th><td>Open this help</td></tr>
+    </tbody>
+  </table>
+  <p class="panel-note">The timer always shows time as text too — never color alone. The ring is just a quiet glow.</p>
+  <button class="btn btn-primary" value="ok">Got it</button>
+</dialog>
+
+<dialog id="confirmDialog" aria-labelledby="confirmTitle" class="panel panel-compact">
+  <h2 id="confirmTitle">Are you sure?</h2>
+  <p id="confirmText" class="panel-sub"></p>
+  <div class="confirm-actions">
+    <button id="confirmCancel" class="btn btn-ghost" value="cancel">Cancel</button>
+    <button id="confirmOk" class="btn btn-danger">Yes, do it</button>
+  </div>
+</dialog>
+
+<noscript>
+  <p class="noscript-note">Stepwise needs JavaScript to store your steps on this device. Everything stays local — but the calm part needs the script part.</p>
+</noscript>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

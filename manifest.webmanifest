@@ -1,0 +1,17 @@
+{
+  "name": "Stepwise — one calm step at a time",
+  "short_name": "Stepwise",
+  "description": "A calm, accessibility-first task companion. It turns overwhelming tasks into one gentle step at a time — designed with ADHD, dyslexia and screen-reader users in mind.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#FAF7F2",
+  "theme_color": "#FAF7F2",
+  "categories": ["productivity", "accessibility", "health"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

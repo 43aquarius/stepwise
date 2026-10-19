@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Stepwise icon: three stepping stones on a calm green hill, a golden top stone -->
+  <circle cx="256" cy="256" r="248" fill="#2D6A4F"/>
+  <circle cx="256" cy="256" r="248" fill="none" stroke="#FAF7F2" stroke-width="10"/>
+  <g>
+    <ellipse cx="150" cy="342" rx="62" ry="40" fill="#FAF7F2" transform="rotate(-8 150 342)"/>
+    <ellipse cx="256" cy="240" rx="62" ry="40" fill="#FAF7F2" transform="rotate(-4 256 240)"/>
+    <ellipse cx="360" cy="150" rx="62" ry="40" fill="#E9C46A" transform="rotate(2 360 150)"/>
+  </g>
+  <path d="M418 84 q34 14 26 54" fill="none" stroke="#E9C46A" stroke-width="16" stroke-linecap="round"/>
+  <circle cx="448" cy="82" r="10" fill="#E9C46A"/>
+</svg>
